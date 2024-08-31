@@ -11,12 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $dataToSave .= "Key: $key; Value: $value" . PHP_EOL;
         }
     }
-    if (!empty($_FILES)) {
-        foreach ($_FILES as $key => $file) {
-            $dataToSave .= "File Key: $key; File Name: " . $file['name'] .
-                PHP_EOL; // Add more file details if needed
-        }
-    }
+
+    $jsonData = json_decode($content, true);
+
+    // Now you can access the rawRequest like this if it's a key within the JSON
+    // $rawRequest = $jsonData['rawRequest'] ?? null;
     // Specify the file path where the data will be saved
     $filePath = "data.txt";
 
@@ -28,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Write the received data to the file
         //fwrite($file, $input . PHP_EOL);
         fwrite($file, $dataToSave);
+        // fwrite($file, $rawRequest);
 
         // Close the file
         fclose($file);
