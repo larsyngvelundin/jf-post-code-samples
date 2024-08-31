@@ -1,21 +1,24 @@
 <?php
+/*** 
+Form used for my tests: https://www.jotform.com/242423323923955
+
+When request is sent from a form, you won't be able to see any of the "echo" responses below.
+You can manually send requests through something like Postman to your webhook server in order to troubleshoot and see these messages.
+***/
+
 // Check for POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Capture input data (you might want to validate and sanitize)
-    $input = file_get_contents('php://input');
-
     // Check if there's any data sent as form-data (key-value pairs)
+    // Iterate through the key-value pairs and append them to the string
     if (!empty($_POST)) {
-        // Iterate through the key-value pairs and append them to the string
         foreach ($_POST as $key => $value) {
             $dataToSave .= "Key: $key; Value: $value" . PHP_EOL;
         }
+    } else {
+        // If no POST data, try to save this line to file instead
+        $dataToSave .= "No POST data in request" . PHP_EOL;
     }
 
-    $jsonData = json_decode($content, true);
-
-    // Now you can access the rawRequest like this if it's a key within the JSON
-    // $rawRequest = $jsonData['rawRequest'] ?? null;
     // Specify the file path where the data will be saved
     $filePath = "data.txt";
 
@@ -25,9 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if the file is opened successfully
     if ($file) {
         // Write the received data to the file
-        //fwrite($file, $input . PHP_EOL);
         fwrite($file, $dataToSave);
-        // fwrite($file, $rawRequest);
 
         // Close the file
         fclose($file);
