@@ -4,7 +4,7 @@
 MySQL PHP Save Example (v2.0)
 Jotform Inc. 2022 - AP#0031
 
-This script was built for the following sample form: https://www.jotform.com/222744188444461
+This script was built for the following sample form: https://www.jotform.com/242422471288962
 For more information, see: https://www.jotform.com/help/?p=608327
 ***/
 
@@ -64,7 +64,7 @@ $first_name = $mysqli->real_escape_string($_POST['name']['first']);
 $last_name = $mysqli->real_escape_string($_POST['name']['last']);
 $email = $mysqli->real_escape_string($_POST['email']);
 $message = $mysqli->real_escape_string($_POST['message']);
-$formID = $mysqli->real_escape_string($_POST['message']);
+$formID = $mysqli->real_escape_string($_POST['formID']);
 
 
 
