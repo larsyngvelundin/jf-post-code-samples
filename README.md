@@ -22,6 +22,10 @@ Some code examples for testing the POST and webhook options in Jotform.
 - Open XAMPP and start Apache & MySQL
 - Open the Admin page for MySQL and set up a database to use
     - [Guide for MySQL setup with XAMPP](https://www.geeksforgeeks.org/how-to-create-a-new-database-in-phpmyadmin/)
+    - In my case I added all columns as VARCHAR to keep it simple
+
+      ![tablesetup](https://github.com/user-attachments/assets/17e83cd6-009e-45bf-a932-3158c324aab4)
+
 
 - Download PHP files from this repository
 - Place files in the `htdocs` folder
